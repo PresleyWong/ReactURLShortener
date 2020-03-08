@@ -12,23 +12,23 @@ class InputForm extends Component {
     this.state = { url: "" };
   }
 
-  handleChange() {
+  handleChange = () => {
     const url = this.textInput.current.value;
     this.setState({ url });
-  }
+  };
 
-  handleClick(url) {
+  handleClick = url => {
     if (this.checkHypertextTransferProtocol(url) !== true)
       url = `https://${url}`;
 
     this.props.onShorten(url);
     this.textInput.current.value = "";
-  }
+  };
 
-  checkHypertextTransferProtocol(str) {
+  checkHypertextTransferProtocol = str => {
     const pattern = new RegExp("^https?:\\/\\/");
     return !!pattern.test(str);
-  }
+  };
 
   render() {
     return (
